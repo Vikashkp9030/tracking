@@ -41,7 +41,6 @@ dependencies:
   firebase_database: ^11.2.0
   permission_handler: ^11.3.1
   device_info_plus: ^11.2.0
-  geolocator_apple:
 
 
 dev_dependencies:

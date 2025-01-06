@@ -70,8 +70,8 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text('Current location : $latLong'),
               Text('Date & Time : ${DateTime.now().toIso8601String()}')
@@ -115,12 +115,9 @@ Future<void> initializeService() async {
     iosConfiguration: IosConfiguration(
         autoStart: true,
         onBackground: (val) {
-          requestLocationPermission();
           return true;
         },
-        onForeground: (val) {
-          requestLocationPermission();
-        }),
+        onForeground: (val) {}),
   );
 }
 
@@ -158,23 +155,14 @@ Future<void> requestLocationPermission() async {
 
 void startService() async {
   await Firebase.initializeApp(
-    options: Platform.isIOS
-        ? const FirebaseOptions(
-            apiKey: "AIzaSyDGYSmXVTx-uv3KyffJ5vlze5uCnnD21aM",
-            appId: "1:1013607028438:ios:d72c39853e4b01f8bc9b77",
-            messagingSenderId: "1013607028438",
-            projectId: "tracking-4d69b",
-            storageBucket: 'tracking-4d69b.firebasestorage.app',
-            databaseURL: "https://tracking-4d69b-default-rtdb.firebaseio.com",
-          )
-        : const FirebaseOptions(
-            apiKey: "AIzaSyDGYSmXVTx-uv3KyffJ5vlze5uCnnD21aM",
-            appId: "1:1013607028438:android:5065ed5ba05b782abc9b77",
-            messagingSenderId: "1013607028438",
-            projectId: "tracking-4d69b",
-            storageBucket: 'tracking-4d69b.firebasestorage.app',
-            databaseURL: "https://tracking-4d69b-default-rtdb.firebaseio.com",
-          ),
+    options: FirebaseOptions(
+      apiKey: "AIzaSyDGYSmXVTx-uv3KyffJ5vlze5uCnnD21aM",
+      appId: "1:1013607028438:android:5065ed5ba05b782abc9b77",
+      messagingSenderId: "1013607028438",
+      projectId: "tracking-4d69b",
+      storageBucket: 'tracking-4d69b.firebasestorage.app',
+      databaseURL: "https://tracking-4d69b-default-rtdb.firebaseio.com",
+    ),
   );
 
   final positionStream = Geolocator.getPositionStream(
@@ -204,10 +192,12 @@ void startService() async {
           )
         : double.infinity;
 
+    // Calculate time difference in minutes
     int timeDifference = lastUpdateTime != null
         ? currentTime.difference(lastUpdateTime!).inMinutes
         : 5; // Default to 5 minutes for the first update
 
+    // Check if either condition (50 meters or 5 minutes) is met
     if (distance >= 50 || timeDifference >= 5) {
       String timestamp = currentTime.toIso8601String();
 
