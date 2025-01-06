@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCl3v1P5E-I1ztOi_W6sJdfB1CKam7OrTo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1013607028438</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.tracking</string>
+	<key>PROJECT_ID</key>
+	<string>tracking-4d69b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tracking-4d69b.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1013607028438:ios:d72c39853e4b01f8bc9b77</string>
+	<key>DATABASE_URL</key>
+	<string>https://tracking-4d69b-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
